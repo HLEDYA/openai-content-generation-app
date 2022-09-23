@@ -1,0 +1,3 @@
+```
+npm install bootstrap react-bootstrap react-router-dom openai
+```

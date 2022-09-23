@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ColdEmails from "./components/ColdEmails";
+import Home from "./components/Home";
+import Navigation from "./components/Navigation";
+import ProductDescription from "./components/ProductDescription";
+import Summarize from "./components/Summarize";
+import Tweets from "./components/Tweets";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navigation />
+
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/product-description" element={<ProductDescription />} />
+          <Route path="/cold-emails" element={<ColdEmails />} />
+          <Route path="/tweets" element={<Tweets />} />
+          <Route path="/summarize" element={<Summarize />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
