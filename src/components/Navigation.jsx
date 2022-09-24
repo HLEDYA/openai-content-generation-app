@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
 
 function Navigation() {
+  const baseUrl = "/react-apps/openai-app/#/";
   return (
     <div>
       <Navbar
@@ -20,10 +21,12 @@ function Navigation() {
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav>
-            <Nav.Link href="product-description">Product Description</Nav.Link>
-            <Nav.Link href="cold-emails">Cold Emails</Nav.Link>
-            <Nav.Link href="tweets">Tweets</Nav.Link>
-            <Nav.Link href="summarize">Summarize</Nav.Link>
+            <Nav.Link href={baseUrl + "product-description"}>
+              Product Description
+            </Nav.Link>
+            <Nav.Link href={baseUrl + "cold-emails"}>Cold Emails</Nav.Link>
+            <Nav.Link href={baseUrl + "tweets"}>Tweets</Nav.Link>
+            <Nav.Link href={baseUrl + "summarize"}>Summarize</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

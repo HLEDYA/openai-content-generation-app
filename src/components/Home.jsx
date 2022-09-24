@@ -3,6 +3,8 @@ import { Container, Row, Col, Carousel } from "react-bootstrap";
 import Display from "./Display";
 
 const Home = () => {
+  const baseUrl = "/react-apps/openai-app/#/";
+
   return (
     <div>
       <Container>
@@ -22,7 +24,7 @@ const Home = () => {
               header="Product Descriptions"
               title="Generate Product Descriptions"
               text="Generate product descriptions for any type of projects. Simply enter the name and the product keywords to get started."
-              theLink="/product-description"
+              theLink={baseUrl + "product-description"}
             ></Display>
           </Col>
           <Col>
@@ -30,7 +32,7 @@ const Home = () => {
               header="Marketing Emails"
               title="Cold Email Template"
               text="This is perfect for marketing agents and companies who need fresh ideas daily on cold email content that is created by AI technology."
-              theLink="/cold-emails"
+              theLink={baseUrl + "cold-emails"}
             ></Display>
           </Col>
           <Col>
@@ -38,7 +40,7 @@ const Home = () => {
               header="Creating Tweets"
               title="Generating Tweets"
               text="Start generating tweet ideas with hashtags for your online social media campaigns on twitter. Create endless unique tweet ideas."
-              theLink="/tweets"
+              theLink={baseUrl + "tweets"}
             ></Display>
           </Col>
           <Col>
@@ -46,7 +48,7 @@ const Home = () => {
               header="Summarizing"
               title="Shorten Long Texts"
               text="Get the gist of the long texts and save time you waste while reading long texts."
-              theLink="/summarize"
+              theLink={baseUrl + "summarize"}
             ></Display>
           </Col>
         </Row>

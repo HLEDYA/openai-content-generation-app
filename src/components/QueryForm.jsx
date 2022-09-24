@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
-// const API_URL = "https://hledya.com/openai_app/api";
-const API_URL = "http://localhost:443/openai_app/api";
+const API_URL = "https://hledya.com/openai_app/api";
+//const API_URL = "http://localhost:443/openai_app/api";
 
-// generate a marketing cold email for the following product:
-
-const getSummary = async (postData) => {
-  const response = await fetch(`${API_URL}/product-description`, {
+const getSummary = async (url, postData) => {
+  const response = await fetch(url, {
     method: "POST",
     body: JSON.stringify({ text: postData }),
     headers: {
@@ -23,10 +21,10 @@ const getSummary = async (postData) => {
   const data = await response.json();
   console.log(data);
 
-  return data.summary;
+  return data.aiResponse;
 };
 
-const ProductDescription = (props) => {
+const QueryForm = (props) => {
   const [aiResponse, setAiResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,9 +33,10 @@ const ProductDescription = (props) => {
 
     const formData = new FormData(e.target),
       formDataObj = Object.fromEntries(formData.entries());
-    console.log(formDataObj.productName);
+    console.log(formDataObj.inputQuery);
     setIsLoading(true);
-    getSummary(formDataObj.productName).then((response) => {
+    const url = API_URL + "/" + props.apiRoute;
+    getSummary(url, formDataObj.inputQuery).then((response) => {
       console.log("response:", response);
       setAiResponse(response);
       setIsLoading(false);
@@ -49,25 +48,20 @@ const ProductDescription = (props) => {
       <Container style={{ maxWidth: "50rem" }}>
         <Row style={{ marginTop: "3rem" }}>
           <Col>
-            <h1>Generate Product Descriptions</h1>
+            <h1>{props.title}</h1>
           </Col>
         </Row>
         <Row>
           <Col>
             <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>
-                  What product would you like to get a description for?
-                </Form.Label>
+                <Form.Label>{props.description}</Form.Label>
                 <Form.Control
                   type="text"
-                  name="productName"
-                  placeholder="Enter product name"
+                  name="inputQuery"
+                  placeholder={props.inputPlaceHolder}
                 />
-                <Form.Text className="text-muted">
-                  Enter as much information as possible for more accurate
-                  description
-                </Form.Text>
+                <Form.Text className="text-muted">{props.note}</Form.Text>
               </Form.Group>
               <Button variant="primary" size="lg" type="submit">
                 Get AI Suggestions
@@ -92,4 +86,4 @@ const ProductDescription = (props) => {
   );
 };
 
-export default ProductDescription;
+export default QueryForm;

@@ -1,5 +1,6 @@
 {
   "name": "openai-content-generation-app",
+  "homepage": "/react-apps/openai-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
